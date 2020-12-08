@@ -1,19 +1,21 @@
-// import logo from './logo.svg';
-
-
 import './App.css';
 
 import {ThemeProvider} from 'styled-components';
-import {COLORS} from './Shared/styles';
+import {COLORS} from './containers/Shared/styles';
+import GlobalStyle from './containers/Shared/GlobalStyles';
 
-import Card from './Components/Card/';
-import Image from './Components/Image/';
+import Header from './containers/Header';
+import Card from './containers/Card';
+import Image from './containers/Image/';
+
+
 
 function App() {
   return (
     <ThemeProvider theme={{colors: COLORS}}>
       <div className="App">
-        <header></header>
+        <GlobalStyle />
+        <Header />
         <main>
           <Card />
           <Image />

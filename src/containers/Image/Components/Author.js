@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import {COLORS} from '../../../Shared/styles';
 
 const Wrapper = styled.div`
-    border: solid 1px ${COLORS.primary};
+    border: solid 1px ${(props) => props.theme.colors.primary};;
     & h2{
         color: green;
         & span{
