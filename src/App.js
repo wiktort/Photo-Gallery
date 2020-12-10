@@ -1,28 +1,33 @@
-import './App.css';
+import React, {Component} from 'react';
+
+import {BrowserRouter as Router} from "react-router-dom";
+import ApplicationRouter from './containers/routes/ApplicationRouter';
 
 import {ThemeProvider} from 'styled-components';
 import {COLORS} from './containers/Shared/styles';
 import GlobalStyle from './containers/Shared/GlobalStyles';
 
 import Header from './containers/Header';
-import Card from './containers/Card';
-import Image from './containers/Image/';
 
 
+class App extends Component {
 
-function App() {
-  return (
-    <ThemeProvider theme={{colors: COLORS}}>
-      <div className="App">
-        <GlobalStyle />
-        <Header />
-        <main>
-          <Card />
-          <Image />
-        </main>
-      </div>
-    </ThemeProvider>
-  );
-}
+
+    render(){
+        return (
+          <ThemeProvider theme={{colors: COLORS}}>
+            <Router>
+              <div className="App">
+                <GlobalStyle />
+                <Header />
+                <main>
+                  <ApplicationRouter />
+                </main>
+              </div>
+            </Router>
+          </ThemeProvider>
+        );
+    }
+};
 
 export default App;

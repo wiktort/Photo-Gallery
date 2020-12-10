@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
@@ -14,7 +15,6 @@ const StyledHeader = styled.header`
     }
 `;
 
-
 class Header extends Component {
     
     render(){
@@ -22,7 +22,7 @@ class Header extends Component {
             <StyledHeader>
                 <nav>
                     <ul>
-                        <li><a href='#'>Home</a></li>
+                        <li><NavLink to='/'>Home</NavLink></li>
                     </ul>
                 </nav>
             </StyledHeader>
