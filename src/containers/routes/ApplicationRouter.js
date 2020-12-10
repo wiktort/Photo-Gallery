@@ -4,7 +4,7 @@ import {
   Route
 } from "react-router-dom";
 
-import Card from '../Card';
+import Home from '../Home';
 import Image from '../Image';
 
 const appRoutes = {
@@ -12,7 +12,7 @@ const appRoutes = {
         id: "HomePage",
         path: "/",
         exact: true,
-        component: Card,
+        component: Home,
     },
     Image: {
         id: "Image",
