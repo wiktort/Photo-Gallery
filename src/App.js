@@ -13,9 +13,8 @@ import Header from './containers/Header';
 class App extends Component {
 
   componentDidMount(){
-    console.log(this)
   }
-
+  
     render(){
         return (
           <ThemeProvider theme={{colors: COLORS}}>
