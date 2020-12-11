@@ -9,10 +9,13 @@ import withFetch from '../HOC/withFetch';
 import { withRouter } from 'react-router-dom';
 
 const Wrapper = styled.div`
-
+    
 `;
 
 class Image extends Component{
+    componentDidMount(){
+        console.log(this.props);
+    }
 
     render(){
         return(

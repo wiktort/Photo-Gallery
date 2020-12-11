@@ -16,6 +16,10 @@ const map = {
         path: "/photos/:id",
         perPage: "",
     },
+    "HomePageSection":{
+        path: "/topics/:id/photos",
+        perPage: "",
+    }
 };
 
 
@@ -36,11 +40,11 @@ const withFetch = BaseComponent => class extends Component {
             });
     }
 
-    createNewPath(key){
+    createNewPath(key, id){
         const { params } = this.props.match;
         const regexp = new RegExp(':id');
      
-        const newID = map[key].path.replace(regexp, params.id);
+        const newID = map[key].path.replace(regexp, id || params.id);
 
         const perPage = map[key].perPage > 0 ? `${newID}?per_page=${map[key].perPage}` : newID;
 
@@ -48,12 +52,14 @@ const withFetch = BaseComponent => class extends Component {
     }
 
     createURL(){
+        const id = this.props.id;
         const { path } = this.props.match;
         const url = config.unsplash.UNSPLASH_BASE_URL;
-        
-        const key = Object.keys(map).find(key => key === path);
-        
-        return url + this.createNewPath(key);
+        const key = id
+            ? "HomePageSection"
+            : Object.keys(map).find(key => key === path);
+
+        return url + this.createNewPath(key, id);
     }
 
     render (){

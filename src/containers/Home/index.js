@@ -2,15 +2,40 @@ import React, { Component }from 'react';
 import { Helmet } from 'react-helmet-async';
 import { withRouter } from 'react-router-dom';
 import withFetch from '../HOC/withFetch';
-import Card from '../Card';
+import Section from './Components/GridList';
 
 class Home extends Component {
 
+    state={
+        loading: true
+    }
+
     componentDidMount(){
-        console.log(this.props)
+        this.getSectionsID();
+    }
+
+    componentDidUpdate(){
+    }
+
+    getSectionsID(){
+        const { data } =  this.props;
+        const sections =  data.map(section => {
+                return section.id;
+        });
+        
+        this.setState({ 
+                sections,
+                loading: false
+        });   
     }
 
     render(){
+       const { sections, loading } = this.state;
+        
+       const showSections = loading
+        ? null
+        : <Section id={sections[0]} />;
+
         return(
             <div>
                 <Helmet>
@@ -20,7 +45,9 @@ class Home extends Component {
                     />
                     <title>Home Page</title>
                 </Helmet>
-                <Card />
+                <div>
+                    {showSections}
+                </div>
             </div>
         );
     }
