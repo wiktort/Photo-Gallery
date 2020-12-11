@@ -11,6 +11,22 @@ import GlobalStyles from './containers/Shared/GlobalStyles';
 
 import Header from './containers/Header';
 
+class Head extends Component {
+
+  render(){
+    return(
+      <Helmet>
+          <meta
+                name="description"
+                content="Photo Gallery created with React"
+          />
+          <title>React based Photo Gallery</title>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet" />
+      </Helmet>
+    )
+  }
+};
 
 class App extends Component {
 
@@ -23,15 +39,7 @@ class App extends Component {
             <Router>
               <HelmetProvider >
                 <div className="App">
-                  <Helmet>
-                    <meta
-                          name="description"
-                          content="Photo Gallery created with React"
-                    />
-                    <title>React based Photo Gallery</title>
-                    <link rel="preconnect" href="https://fonts.gstatic.com" />
-                    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet" />
-                  </Helmet>
+                  <Head />
                   <GlobalStyles />
                   <Header />
                   <main>
