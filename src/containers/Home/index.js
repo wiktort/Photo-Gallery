@@ -1,4 +1,5 @@
 import React, { Component }from 'react';
+import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router-dom';
 import withFetch from '../HOC/withFetch';
 import Card from '../Card';
@@ -11,9 +12,16 @@ class Home extends Component {
 
     render(){
         return(
-            <section>
+            <div>
+                <Helmet>
+                    <meta
+                        name="description"
+                        content="Photo Gallery created with React"
+                    />
+                    <title>Home Page</title>
+                </Helmet>
                 <Card />
-            </section>
+            </div>
         );
     }
 };
