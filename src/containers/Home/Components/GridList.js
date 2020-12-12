@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import Card from '../../Card';
 import withFetch from '../../HOC/withFetch';
@@ -14,6 +14,7 @@ const StyledList = styled.section`
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 2vh;
+    padding-top: 1vh;
 
     border-top: 1px solid ${(props) => props.theme.colors.primary};
 `;
@@ -21,6 +22,21 @@ const StyledCardsWrapper = styled.div`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+        & a{
+            color: ${(props) => props.theme.colors.text};
+        }
+`;
+
+const StyledButton = styled.button`
+    width: 200px;
+    line-height: 30px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1rem;
+    background-color: ${(props) => props.theme.colors.primary};
+        a{
+            color: ${(props) => props.theme.colors.lightText};
+        }
 `;
 
 class GridList extends Component{
@@ -31,6 +47,7 @@ class GridList extends Component{
 
     componentDidMount(){
         this.setState({loading: false})
+        console.log(this)
     }
 
     createCards(){
@@ -45,7 +62,7 @@ class GridList extends Component{
 
     render(){
         const { loading } = this.state;
-        console.log(this.props)
+        const { id } = this.props.other;
         const showCards = loading 
             ? null
             : this.createCards();
@@ -56,6 +73,13 @@ class GridList extends Component{
                 <StyledCardsWrapper>
                     {showCards}
                 </StyledCardsWrapper>
+                <StyledButton>
+                    <Link
+                        to={`/section/${id}`}
+                    >
+                        See more
+                    </Link>
+                </StyledButton>
             </StyledList>
         )
     }

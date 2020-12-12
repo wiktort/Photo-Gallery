@@ -6,6 +6,7 @@ import {
 
 import Home from '../Home';
 import Image from '../Image';
+import Section from '../Section';
 
 const appRoutes = {
     Home: {
@@ -19,7 +20,13 @@ const appRoutes = {
         path: "/image/:id",
         exact: false,
         component: Image,
-    }   
+    },
+    Section: {
+        id: "Section",
+        path: "/section/:id",
+        exact: false,
+        component: Section,
+    }
 };
 
 function RouteMap ()  {
