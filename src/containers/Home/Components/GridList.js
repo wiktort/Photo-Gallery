@@ -11,6 +11,8 @@ import styled from 'styled-components';
 
 const StyledList = styled.section`
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 2vh;
@@ -20,6 +22,7 @@ const StyledList = styled.section`
 `;
 const StyledCardsWrapper = styled.div`
     display: flex;
+    align-content: center;
     justify-content: center;
     flex-wrap: wrap;
         & a{
@@ -33,10 +36,9 @@ const StyledButton = styled.button`
     border-radius: 30px;
     border: none;
     font-size: 1rem;
-    background-color: ${(props) => props.theme.colors.primary};
-        a{
-            color: ${(props) => props.theme.colors.lightText};
-        }
+    background-color: ${(props) => props.theme.colors.button};
+    color: ${(props) => props.theme.colors.lightText};
+    cursor: pointer;
 `;
 
 class GridList extends Component{
@@ -73,13 +75,13 @@ class GridList extends Component{
                 <StyledCardsWrapper>
                     {showCards}
                 </StyledCardsWrapper>
-                <StyledButton>
                     <Link
                         to={`/section/${id}`}
                     >
-                        See more
+                        <StyledButton>
+                            See more
+                        </StyledButton>
                     </Link>
-                </StyledButton>
             </StyledList>
         )
     }

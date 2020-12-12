@@ -3,6 +3,7 @@ const COLORS = {
     lightText: '#FEFEFF',
     background: '#EEE',
     primary: '#282C34',
+    button: '#455679'
 };
 
 

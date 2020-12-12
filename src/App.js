@@ -11,6 +11,7 @@ import GlobalStyles from './containers/Shared/GlobalStyles';
 import config from './config/config';
 
 import Header from './containers/Header';
+import Footer from './containers/Footer';
 
 class Head extends Component {
 
@@ -51,6 +52,7 @@ class App extends Component {
                     <main>
                       <ApplicationRouter />
                     </main>
+                    <Footer />
                   </div>
                 </HelmetProvider>
               </Router>
