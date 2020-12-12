@@ -31,14 +31,13 @@ class GridList extends Component{
 
     componentDidMount(){
         this.setState({loading: false})
-        console.log(this.props);
     }
 
     createCards(){
         const { data } = this.props;
         const quantity = settings.sectionsListsSettings.cardsToShow;
         const images = data.map(item => {
-            return <Card key={item.id} url={item.urls.small} alt={item.alt_description}/>
+            return <Card key={item.id} url={item.urls.small} alt={item.alt_description} id={item.id}/>
         });
 
         return images.slice(0, quantity);

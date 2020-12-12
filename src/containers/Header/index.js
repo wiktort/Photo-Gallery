@@ -27,7 +27,7 @@ class Header extends Component {
             <StyledHeader>
                 <nav>
                     <ul>
-                        <li><NavLink to='/'><i class="fas fa-home"></i>Home</NavLink></li>
+                        <li><NavLink to='/'><i className="fas fa-home"></i>Home</NavLink></li>
                         <li><NavLink to='/image/id'>Image</NavLink></li>
                     </ul>
                 </nav>

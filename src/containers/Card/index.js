@@ -30,11 +30,12 @@ class Card extends Component{
     }
 
     render(){
+        const { id, url, alt } = this.props;
         return(
             <Wrapper>
                 {/* <button onClick={this.switchCard}>Switch Card</button>
                 <this.state.cardComponent url={this.props.url} /> */}
-                <CardClass url={this.props.url} alt={this.props.alt} />
+                <CardClass url={url} alt={alt} id={id} />
             </Wrapper>
         );
     }
