@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Header({type}){
+function Header(){
 
     return(
         <header>
-            <h1>Mój pierwszy komponent {type}</h1>
+            <h3>Header</h3>
         </header>
     );
 }

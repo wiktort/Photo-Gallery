@@ -8,9 +8,11 @@ class CardClass extends Component {
     render(){
 
         return(
+
+
         <div className="CardClass" >
-            <Header type='klasowy'/>
-            <Content />
+            <Header />
+            <Content url={this.props.url} alt={this.props.alt} />
             <Footer />
         </div>
         );

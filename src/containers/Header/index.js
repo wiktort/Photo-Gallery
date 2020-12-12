@@ -8,7 +8,12 @@ const StyledHeader = styled.header`
         nav {
             ul {
                 display: flex;
+                align-items: center;
+                padding: 2vh;
             }
+                li{
+                    margin-right: 10px;
+                }
         a {
             color: ${(props) => props.theme.colors.lightText};
         }
@@ -22,8 +27,8 @@ class Header extends Component {
             <StyledHeader>
                 <nav>
                     <ul>
-                        <li><NavLink to='/'>Home</NavLink></li>
-                        <li><NavLink to='/image/id'>Home</NavLink></li>
+                        <li><NavLink to='/'><i class="fas fa-home"></i>Home</NavLink></li>
+                        <li><NavLink to='/image/id'>Image</NavLink></li>
                     </ul>
                 </nav>
             </StyledHeader>

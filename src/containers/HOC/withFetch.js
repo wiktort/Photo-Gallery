@@ -65,7 +65,7 @@ const withFetch = BaseComponent => class extends Component {
     render (){
         const { data, loading } = this.state;
 
-        return loading ? null :  <BaseComponent data={data} />;
+        return loading ? null :  <BaseComponent data={data} other={this.props}/>;
     }
 };
 

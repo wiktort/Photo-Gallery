@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 
-function Content(){
-    return(
-        <main>
-            <p>Treść...</p>
-        </main>
-    );
+class Content extends Component{
+
+    render(){
+        return(
+            <main>
+                <img src={this.props.url} alt={this.props.alt} />
+            </main>
+        );
+    }
 }
 
 export default Content;

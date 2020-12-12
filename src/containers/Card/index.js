@@ -4,9 +4,8 @@ import CardClass from './CardClass';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-margin: 5vh 10vw;
-padding: 1vh;
-background-color: #61DAFB;
+margin: 1vmax;
+padding: 1vh 0;
 `;
 
 class Card extends Component{
@@ -33,8 +32,9 @@ class Card extends Component{
     render(){
         return(
             <Wrapper>
-                <button onClick={this.switchCard}>Switch Card</button>
-                <this.state.cardComponent />
+                {/* <button onClick={this.switchCard}>Switch Card</button>
+                <this.state.cardComponent url={this.props.url} /> */}
+                <CardClass url={this.props.url} alt={this.props.alt} />
             </Wrapper>
         );
     }

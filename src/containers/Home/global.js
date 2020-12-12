@@ -1,6 +1,7 @@
 const settings = {
     sectionsListsSettings: {
-        listsToShow: 3
+        listsToShow: 3,
+        cardsToShow: 10
     }
 
 
