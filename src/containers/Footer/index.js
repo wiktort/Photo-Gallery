@@ -20,7 +20,7 @@ class Footer extends Component {
     render(){
         return(
             <StyledFooter>
-                <p>Created <a href="https://github.com/wiktort">Wiktor Tumiński</a></p>
+                <p>Created by <a href="https://github.com/wiktort">Wiktor Tumiński</a></p>
             </StyledFooter>
         );
     }

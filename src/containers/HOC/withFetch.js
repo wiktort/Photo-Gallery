@@ -8,10 +8,6 @@ const map = {
         path: "/topics",
         perPage: ""
     },
-    "/section/:id": {
-        path: "/topics/:id",
-        perPage: "20",
-    },
     "/image/:id": {
         path: "/photos/:id",
         perPage: "",
@@ -46,7 +42,7 @@ const withFetch = BaseComponent => class extends Component {
      
         const newID = map[key].path.replace(regexp, id || params.id);
 
-        const perPage = map[key].perPage > 0 ? `${newID}?per_page=${map[key].perPage}` : newID;
+        const perPage = map[key].perPage > 0 ? `${newID}/?per_page=${map[key].perPage}` : newID;
 
         return perPage;
     }
@@ -58,7 +54,6 @@ const withFetch = BaseComponent => class extends Component {
         const key = id
             ? "HomePageSection"
             : Object.keys(map).find(key => key === path);
-
         return url + this.createNewPath(key, id);
     }
 

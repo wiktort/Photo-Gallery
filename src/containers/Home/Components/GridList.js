@@ -21,10 +21,14 @@ const StyledList = styled.section`
     border-top: 1px solid ${(props) => props.theme.colors.primary};
 `;
 const StyledCardsWrapper = styled.div`
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    flex-wrap: wrap;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        & > div{
+            max-width: 320px;
+        }
         & a{
             color: ${(props) => props.theme.colors.text};
         }
@@ -49,7 +53,6 @@ class GridList extends Component{
 
     componentDidMount(){
         this.setState({loading: false})
-        console.log(this)
     }
 
     createCards(){
@@ -64,24 +67,24 @@ class GridList extends Component{
 
     render(){
         const { loading } = this.state;
-        const { id } = this.props.other;
+        const { slug, title} = this.props.other;
         const showCards = loading 
             ? null
             : this.createCards();
 
         return (
             <StyledList>
-                <h2>{this.props.other.title}</h2>
+                <h2>{title}</h2>
                 <StyledCardsWrapper>
                     {showCards}
                 </StyledCardsWrapper>
-                    <Link
-                        to={`/section/${id}`}
-                    >
-                        <StyledButton>
-                            See more
-                        </StyledButton>
-                    </Link>
+                <Link
+                    to={`/section/${slug}`}
+                >
+                    <StyledButton>
+                        See more
+                    </StyledButton>
+                </Link>
             </StyledList>
         )
     }

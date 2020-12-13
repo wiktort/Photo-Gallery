@@ -23,7 +23,7 @@ const appRoutes = {
     },
     Section: {
         id: "Section",
-        path: "/section/:id",
+        path: "/section/:slug",
         exact: false,
         component: Section,
     }

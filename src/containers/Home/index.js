@@ -20,10 +20,12 @@ class Home extends Component {
 
     getSectionsID(){
         const { data } =  this.props;
+        if(!Array.isArray(data)) return;
         const sections =  data.map(section => {
                 return {
                     id: section.id,
-                    title: section.title
+                    title: section.title,
+                    slug: section.slug
                 };
         });
         
@@ -36,7 +38,7 @@ class Home extends Component {
     createSections(list){
         const quantity = settings.sectionsListsSettings.listsToShow;
         const sections = list.map(item => {
-            return <Section key={item.id} id={item.id} title={item.title} />
+            return <Section key={item.id} id={item.id} title={item.title} slug={item.slug} />
         });
 
         return sections.slice(0, quantity);
