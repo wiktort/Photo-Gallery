@@ -17,8 +17,10 @@ const StyledList = styled.section`
     flex-wrap: wrap;
     margin-top: 2vh;
     padding-top: 1vh;
-
-    border-top: 1px solid ${(props) => props.theme.colors.primary};
+        h2{
+            text-transform: uppercase;
+            font-size: 1.5rem;
+        }
 `;
 const StyledCardsWrapper = styled.div`
         display: flex;
@@ -77,7 +79,7 @@ class Section extends Component{
         const loader = <div className="loader">Loading ...</div>;
         return(
             <StyledList>
-                <h2>{this.props.match.slug}</h2>
+                <h2>{this.props.match.params.slug}</h2>
                 <InfiniteScroll
                 pageStart={0}
                 loadMore={this.getData.bind(this)}
