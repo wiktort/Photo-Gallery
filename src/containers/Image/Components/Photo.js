@@ -1,20 +1,10 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
-const StyledImage = styled.div`
-    display: flex;
-    justify-content: center;
-    max-width: 1366px;
-    margin: 0 auto;
-        & img{
-            max-height: 80vh;
-        }
-`;
 
 class Photo extends Component {
     render(){
         const { urls, alt, desc } = this.props;
-        console.log(this.props);
         return(
             <StyledImage>
                 <figure>
@@ -27,3 +17,14 @@ class Photo extends Component {
 };
 
 export default Photo;
+
+const StyledImage = styled.div`
+    display: flex;
+    justify-content: center;
+        & img{
+            max-height: 80vh;
+        }
+        & figcaption{
+            padding: 0 30px 20px;
+        }
+`;

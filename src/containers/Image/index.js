@@ -10,24 +10,8 @@ import { withRouter } from 'react-router-dom';
 
 import { Helmet } from 'react-helmet-async';
 
-const StyledWrapper = styled.div`
-    height: 100vh;
-`;
-
-const StyledRow = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin: 2vh;
-
-    @media screen and (orientation: landscape){
-        max-width: 80vw;
-        margin-left: auto;
-        margin-right: auto;
-    }
-`;
 
 function Head(data){
-    console.log(data)
       return(
         <Helmet>
             <meta property="og:image"  content={data?.url?.regular} />
@@ -49,7 +33,6 @@ class Image extends Component{
                     <Social path={this.props.other.location.pathname} />
                 </StyledRow>
                 <Photo urls={urls} alt={alt} desc={description} />
-                
             </StyledWrapper>
         );
     }
@@ -60,3 +43,18 @@ export default withRouter(
         Image
     )
 );
+
+const StyledWrapper = styled.div`
+`;
+
+const StyledRow = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 2vh;
+
+    @media screen and (orientation: landscape){
+        max-width: 80vw;
+        margin-left: auto;
+        margin-right: auto;
+    }
+`;

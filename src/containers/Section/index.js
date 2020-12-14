@@ -7,34 +7,8 @@ import { codesGeneretor, createURL } from './helpers';
 import { getFromUnsplash } from './actions';
 
 import Card from '../Card';
-
-
-const StyledList = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 2vh;
-    padding-top: 1vh;
-        h2{
-            text-transform: uppercase;
-            font-size: 1.5rem;
-        }
-`;
-const StyledCardsWrapper = styled.div`
-        display: flex;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        & > div{
-            max-width: 320px;
-        }
-        & a{
-            color: ${(props) => props.theme.colors.text};
-        }
-`;
+import Loader from '../Shared/Loader';
+import StyledColumn from '../Shared/Grid/StyledColumn';
 
 
 class Section extends Component{
@@ -43,7 +17,8 @@ class Section extends Component{
         data: [],
         cards: [],
         page: 1,
-        loading: true,
+        hasMore: true,
+
     }
 
     componentDidMount(){
@@ -56,11 +31,29 @@ class Section extends Component{
 
         getFromUnsplash(url)
             .then(data => {
+                if(data.length < 1){
+                    this.setState({
+                        hasMore: false
+                    });
+                    if(this.state.cards.length < 1){
+                        this.setState((prevstate) => ({
+                            cards: prevstate.cards.concat(
+                            <div key={codesGeneretor()}>
+                                <p>Couldn't get data.. Please comeback later ;)</p>
+                            </div>
+                            )
+                        }));
+                    };
+                    throw console.warn("no more data");
+                } else {
+                  return data;  
+                };
+            })
+            .then(data => {
                 this.setState((prevstate) => ({
                     data: prevstate.data.concat(data),
                     cards: prevstate.cards.concat(this.createCards(data)),
                     page: prevstate.page += 1,
-                    loading: false
                     })    
                 );
             });
@@ -76,24 +69,22 @@ class Section extends Component{
     }
 
     render(){
-        const loader = <div className="loader">Loading ...</div>;
+        const { cards, hasMore } = this.state;
+        const load = <Loader key={codesGeneretor()} />;
         return(
-            <StyledList>
-                <h2>{this.props.match.params.slug}</h2>
-                <InfiniteScroll
-                pageStart={0}
-                loadMore={this.getData.bind(this)}
-                hasMore={true}
-                loader={loader}>
-
-                <StyledCardsWrapper>
-                    {this.state.cards}
-                </StyledCardsWrapper>
-
-            </InfiniteScroll>
-                
-            </StyledList>
-        )
+                <StyledList>
+                    <h2>{this.props.match.params.slug}</h2>
+                    <StyledInfiniteScroll
+                    pageStart={0}
+                    loadMore={this.getData.bind(this)}
+                    hasMore={hasMore}
+                    loader={load}>
+                        <StyledCardsWrapper>
+                            {cards}
+                        </StyledCardsWrapper>
+                    </StyledInfiniteScroll>
+                </StyledList>
+        );
     }
 
 };
@@ -102,3 +93,36 @@ class Section extends Component{
 export default withRouter(
     Section
 );
+
+const StyledList = styled(StyledColumn)`
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    margin-top: 2vh;
+    padding-top: 1vh;
+        h2{
+            text-transform: uppercase;
+            font-size: 1.5rem;
+        }
+`;
+
+const StyledInfiniteScroll = styled(InfiniteScroll)`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+`;
+const StyledCardsWrapper = styled.div`
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        & > div{
+            max-width: 320px;
+        }
+        & a{
+            color: ${(props) => props.theme.colors.text};
+        }
+`;

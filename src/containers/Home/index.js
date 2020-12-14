@@ -2,6 +2,7 @@ import React, { Component }from 'react';
 import { Helmet } from 'react-helmet-async';
 import { withRouter } from 'react-router-dom';
 import withFetch from '../HOC/withFetch';
+import StyledColumn from '../Shared/Grid/StyledColumn';
 import Section from './Components/GridList';
 import settings from './global';
 
@@ -60,9 +61,9 @@ class Home extends Component {
                     />
                     <title>Home Page</title>
                 </Helmet>
-                <div>
+                <StyledColumn>
                     {showSections}
-                </div>
+                </StyledColumn>
             </div>
         );
     }

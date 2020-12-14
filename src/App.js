@@ -5,9 +5,11 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from "react-router-dom";
 import ApplicationRouter from './containers/routes/ApplicationRouter';
 
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { COLORS } from './containers/Shared/styles';
 import GlobalStyles from './containers/Shared/GlobalStyles';
+import StyledColumn from './containers/Shared/Grid/StyledColumn';
+import StyledRow from './containers/Shared/Grid/StyledRow';
 import config from './config/config';
 
 import Header from './containers/Header';
@@ -45,15 +47,17 @@ class App extends Component {
             <ThemeProvider theme={{colors: COLORS}}>
               <Router>
                 <HelmetProvider >
-                  <div className="App">
+                  <StyledWrapper>
                     <Head />
                     <GlobalStyles />
                     <Header />
-                    <main>
-                      <ApplicationRouter />
-                    </main>
+                      <StyledRowWrapper>
+                        <StyledMain as="main">
+                          <ApplicationRouter />
+                        </StyledMain>
+                      </StyledRowWrapper>
                     <Footer />
-                  </div>
+                  </StyledWrapper>
                 </HelmetProvider>
               </Router>
             </ThemeProvider>
@@ -63,3 +67,16 @@ class App extends Component {
 
 
 export default App;
+
+const StyledWrapper = styled(StyledColumn)`
+    min-height: 100vh;
+`;
+
+const StyledRowWrapper = styled(StyledRow)`
+    display: flex;
+    flex-direction: column;
+`;
+
+const StyledMain = styled(StyledColumn)`
+  flex-grow: 1;
+`;

@@ -1,52 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Card from '../../Card';
 import withFetch from '../../HOC/withFetch';
 
 import settings from '../global';
 
-import styled from 'styled-components';
 
 
-const StyledList = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 2vh;
-    padding-top: 1vh;
-    border-top: 1px solid ${(props) => props.theme.colors.primary};
-        h2{
-            text-transform: uppercase;
-            font-size: 1.5rem;
-        }
-`;
-const StyledCardsWrapper = styled.div`
-        display: flex;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        & > div{
-            max-width: 320px;
-        }
-        & a{
-            color: ${(props) => props.theme.colors.text};
-        }
-`;
-
-const StyledButton = styled.button`
-    width: 200px;
-    line-height: 30px;
-    border-radius: 30px;
-    border: none;
-    font-size: 1rem;
-    background-color: ${(props) => props.theme.colors.button};
-    color: ${(props) => props.theme.colors.lightText};
-    cursor: pointer;
-`;
 
 class GridList extends Component{
 
@@ -98,3 +60,45 @@ export default withRouter(
         GridList
     )
 );
+
+const StyledList = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 2vmax;
+    padding-bottom: 4vmax;
+    border-top: 1px solid ${(props) => props.theme.colors.primary};
+        h2{
+            text-transform: uppercase;
+            font-size: 1.5rem;
+        }
+    &::first-of-type{
+        border: none;
+    }
+`;
+const StyledCardsWrapper = styled.div`
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        & > div{
+            max-width: 320px;
+        }
+        & a{
+            color: ${(props) => props.theme.colors.text};
+        }
+`;
+
+const StyledButton = styled.button`
+    width: 200px;
+    line-height: 30px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1rem;
+    background-color: ${(props) => props.theme.colors.button};
+    color: ${(props) => props.theme.colors.lightText};
+    cursor: pointer;
+`;

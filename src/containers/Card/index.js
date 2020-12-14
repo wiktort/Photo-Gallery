@@ -3,7 +3,7 @@ import CardFunc from './Card';
 import CardClass from './CardClass';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const StyledWrapper = styled.div`
 margin: 1vmax;
 padding: 1vh 0;
 `;
@@ -32,11 +32,11 @@ class Card extends Component{
     render(){
         const { id, url, alt } = this.props;
         return(
-            <Wrapper>
+            <StyledWrapper>
                 {/* <button onClick={this.switchCard}>Switch Card</button>
                 <this.state.cardComponent url={this.props.url} /> */}
                 <CardClass url={url} alt={alt} id={id} />
-            </Wrapper>
+            </StyledWrapper>
         );
     }
 

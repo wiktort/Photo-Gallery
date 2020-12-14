@@ -23,23 +23,14 @@ const createURL = (slug, page) => {
 
 
 
+const codesGeneretor = (codeLength=15) => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnpqrstuvwxyz0123456789_';
 
-
-const codesGeneretor = () => {
-    const chars = 'ABCDEFGIJK0123456789';
-
-    const codesNumber = 1000;
-    const charsNumber = 12;
-
-    let code = "";
-
-    for (let i = 0; i < codesNumber; i++) {
-        for (let i = 0; i < charsNumber; i++) {
-        const index = Math.floor(Math.random() * 20)
-        code += chars[index];
-        }
-    }
-    return code;
-}
+    return [...Array(codeLength)].reduce(acc => {
+        const index = Math.floor(Math.random() * chars.length);
+        return acc += chars[index];
+    },"");
+};
 
 export { createURL, codesGeneretor };
+
