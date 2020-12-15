@@ -46,10 +46,12 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledIcon = styled.button`
+    display: flex;
+    align-items: center;
     margin-right: 10px;
-    padding: 3px;
+    border-radius: 50%;
         img{
-            height: 100%;
+            height: 80%;
             width: auto;
             filter: invert(15%) sepia(8%) saturate(1083%) hue-rotate(182deg) brightness(89%) contrast(91%);
         }
