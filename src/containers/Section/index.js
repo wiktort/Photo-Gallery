@@ -25,6 +25,16 @@ class Section extends Component{
         this.getData();
     }
 
+    checkData = (data) => {
+        return data.length >= 1 
+        ? data 
+        : data.concat(
+        <div key={codesGeneretor()}>
+            <p>Couldn't get any data.. Please comeback later ;)</p>
+        </div>
+        );
+    }
+
     getData = () =>{
         const { slug } = this.props.match.params;
         const url = createURL(slug, this.state.page);
@@ -32,18 +42,10 @@ class Section extends Component{
         getFromUnsplash(url)
             .then(data => {
                 if(data.length < 1){
-                    this.setState({
-                        hasMore: false
-                    });
-                    if(this.state.cards.length < 1){
-                        this.setState((prevstate) => ({
-                            cards: prevstate.cards.concat(
-                            <div key={codesGeneretor()}>
-                                <p>Couldn't get data.. Please comeback later ;)</p>
-                            </div>
-                            )
-                        }));
-                    };
+                    this.setState((prevstate) => ({
+                        hasMore: false,
+                        cards: this.checkData(prevstate.cards),
+                    }));
                     throw console.warn("no more data");
                 } else {
                   return data;  
@@ -125,4 +127,8 @@ const StyledCardsWrapper = styled.div`
         & a{
             color: ${(props) => props.theme.colors.text};
         }
+        & p {
+            text-align: center;
+        }
+
 `;
