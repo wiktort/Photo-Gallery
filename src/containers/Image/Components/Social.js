@@ -51,7 +51,7 @@ const StyledIcon = styled.button`
     margin-right: 10px;
     border-radius: 50%;
         img{
-            height: 80%;
+            height: 30px;
             width: auto;
             filter: invert(15%) sepia(8%) saturate(1083%) hue-rotate(182deg) brightness(89%) contrast(91%);
         }
