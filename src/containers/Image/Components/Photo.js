@@ -7,10 +7,10 @@ class Photo extends Component {
         const { urls, alt, desc } = this.props;
         return(
             <StyledImage>
-                <figure>
+                <StyledFigure>
                     <img src={urls.regular} alt={alt || "photo from Unsplash"} />
                     <figcaption>Author's description: {desc}</figcaption>
-                </figure>
+                </StyledFigure>
             </StyledImage>
         );
     }
@@ -25,6 +25,13 @@ const StyledImage = styled.div`
             max-height: 80vh;
         }
         & figcaption{
+            align-self: flex-start;
             padding: 0 30px 20px;
         }
+`;
+
+const StyledFigure = styled.figure`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
