@@ -5,8 +5,9 @@ import styled from 'styled-components';
 
 import { codesGeneretor, createURL } from './helpers';
 import { getFromUnsplash } from './actions';
-
+import settings from './global';
 import Card from '../Card';
+import Select from '../Shared/Select';
 import Loader from '../Shared/Loader';
 import StyledColumn from '../Shared/Grid/StyledColumn';
 
@@ -18,13 +19,9 @@ class Section extends Component{
         cards: [],
         page: 1,
         hasMore: true,
-
+        sortBy: null,
     }
-
-    componentDidMount(){
-        this.getData();
-    }
-
+  
     checkData = (data) => {
         return data.length >= 1 
         ? data 
@@ -37,7 +34,8 @@ class Section extends Component{
 
     getData = () =>{
         const { slug } = this.props.match.params;
-        const url = createURL(slug, this.state.page);
+        const { page, sortBy } = this.state;
+        const url = createURL(slug, page, sortBy);
 
         getFromUnsplash(url)
             .then(data => {
@@ -70,14 +68,34 @@ class Section extends Component{
         return images;
     }
 
+    sort = (ref) => {
+        if(!ref.current) return;
+        const options = ref.current.options;
+        const selectedIndex = options.selectedIndex;
+        const selectedValue = options[selectedIndex]?.value;
+  
+        this.setState({
+            sortBy: selectedValue,
+            data: [],
+            cards: [],
+            page: 1
+        });
+        this.getData();
+    }
+
     render(){
         const { cards, hasMore } = this.state;
+        const { data, options } = settings.sort;
         const load = <Loader key={codesGeneretor()} />;
+
         return(
                 <StyledList>
-                    <h2>{this.props.match.params.slug}</h2>
+                    <StyledHeader>
+                        <h2>{this.props.match.params.slug}</h2>
+                        <Select callback={this.sort} data={data} options={options} />
+                    </StyledHeader>
                     <StyledInfiniteScroll
-                    pageStart={0}
+                    initialLoad={false}
                     loadMore={this.getData.bind(this)}
                     hasMore={hasMore}
                     loader={load}>
@@ -91,7 +109,6 @@ class Section extends Component{
 
 };
 
-
 export default withRouter(
     Section
 );
@@ -101,14 +118,29 @@ const StyledList = styled(StyledColumn)`
     justify-content: flex-start;
     flex-grow: 1;
     flex-wrap: wrap;
-    margin-top: 2vh;
     padding-top: 1vh;
         h2{
             text-transform: uppercase;
             font-size: 1.5rem;
         }
 `;
-
+const StyledHeader = styled.header`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    height: ${(props) => props.theme.sizes.headerHeight};
+    background-color: ${(props) => props.theme.colors.background};
+    @media screen and (min-width: 533px){
+        grid-template-columns: repeat(3, 1fr);
+        h2{
+            grid-column-start: 2;
+        }
+    }
+`;
 const StyledInfiniteScroll = styled(InfiniteScroll)`
     display: flex;
     flex-direction: column;

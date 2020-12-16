@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import ApplicationRouter from './containers/routes/ApplicationRouter';
 
 import styled, { ThemeProvider } from 'styled-components';
-import { COLORS } from './containers/Shared/styles';
+import { COLORS, SIZES } from './containers/Shared/styles';
 import GlobalStyles from './containers/Shared/GlobalStyles';
 import StyledColumn from './containers/Shared/Grid/StyledColumn';
 import StyledRow from './containers/Shared/Grid/StyledRow';
@@ -44,7 +44,7 @@ class App extends Component {
   
     render(){
         return (
-            <ThemeProvider theme={{colors: COLORS}}>
+            <ThemeProvider theme={{colors: COLORS, sizes: SIZES}}>
               <Router>
                 <HelmetProvider >
                   <StyledWrapper>

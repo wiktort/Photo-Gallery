@@ -2,23 +2,6 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 
-const StyledHeader = styled.header`
-    background-color: ${(props) => props.theme.colors.primary};
-    color: ${(props) => props.theme.colors.lightText};
-        nav {
-            ul {
-                display: flex;
-                align-items: center;
-                padding: 2vh;
-            }
-                li{
-                    margin-right: 10px;
-                }
-        a {
-            color: ${(props) => props.theme.colors.lightText};
-        }
-    }
-`;
 
 class Header extends Component {
     
@@ -36,3 +19,24 @@ class Header extends Component {
 };
 
 export default Header;
+
+
+const StyledHeader = styled.header`
+    background-color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.lightText};
+    z-index: 1;
+        nav {
+            ul {
+                display: flex;
+                align-items: center;
+                height: ${(props) => props.theme.sizes.headerHeight};
+                padding-left: 2vmax;
+            }
+                li{
+                    margin-right: 10px;
+                }
+        a {
+            color: ${(props) => props.theme.colors.lightText};
+        }
+    }
+`;

@@ -6,5 +6,8 @@ const COLORS = {
     button: '#455679'
 };
 
+const SIZES = {
+    headerHeight: '60px',
+}
 
-export {COLORS};
+export { COLORS, SIZES };

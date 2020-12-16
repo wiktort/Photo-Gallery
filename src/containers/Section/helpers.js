@@ -1,24 +1,20 @@
 import config from '../../config/config';
-
-const data = {
-        path: "/topics/:slug/photos",
-        perPage: "20",
-};
+import settings from './global';
 
 
-const createNewPath = (slug, page) => {
+const createNewPath = (slug, page, order) => {
+    const { perPage } = settings;
     const regexp = new RegExp(':slug');
- 
-    const newID = data.path.replace(regexp, slug);
+    const newID = settings.path.replace(regexp, slug);
 
-    const perPage = `${newID}/?per_page=${data.perPage}&&page=${page}`;
+    const withParams = `${newID}/?per_page=${perPage}&&page=${page}&&order_by=${order}`;
 
-    return perPage;
+    return withParams;
 }
 
-const createURL = (slug, page) => {
+const createURL = (slug, page, order) => {
     const url = config.unsplash.UNSPLASH_BASE_URL;
-    return url + createNewPath(slug, page);
+    return url + createNewPath(slug, page, order);
 }
 
 
