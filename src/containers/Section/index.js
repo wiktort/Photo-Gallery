@@ -19,7 +19,7 @@ class Section extends Component{
         cards: [],
         page: 1,
         hasMore: true,
-        sortBy: null,
+        sortBy: settings.sort.data.defaultValue,
     }
   
     checkData = (data) => {
@@ -68,9 +68,9 @@ class Section extends Component{
         return images;
     }
 
-    sort = (ref) => {
-        if(!ref.current) return;
-        const options = ref.current.options;
+    sort = (e) => {
+        if(!e.target.options) return;
+        const options = e.target.options;
         const selectedIndex = options.selectedIndex;
         const selectedValue = options[selectedIndex]?.value;
   
@@ -80,7 +80,6 @@ class Section extends Component{
             cards: [],
             page: 1
         });
-        this.getData();
     }
 
     render(){
@@ -95,7 +94,7 @@ class Section extends Component{
                         <Select callback={this.sort} data={data} options={options} />
                     </StyledHeader>
                     <StyledInfiniteScroll
-                    initialLoad={false}
+                    initialLoad={true}
                     loadMore={this.getData.bind(this)}
                     hasMore={hasMore}
                     loader={load}>

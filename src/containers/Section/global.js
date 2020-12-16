@@ -5,7 +5,8 @@ const settings = {
         data:{
             id: "sort_by",
             content: "Sort by",
-            name: "sort"
+            name: "sort",
+            defaultValue: "latest"
         },
         options: {
             popular: {
