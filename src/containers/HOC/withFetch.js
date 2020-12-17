@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { getFromUnsplash } from './actions';
-import config from '../../config/config';
-
+import { createURL } from '../Shared/helpers';
 
 const map = {
     "/": {
@@ -13,7 +12,7 @@ const map = {
         perPage: "",
     },
     "HomePageSection":{
-        path: "/topics/:id/photos",
+        path: "/topics/:slug/photos",
         perPage: "",
     }
 };
@@ -26,7 +25,8 @@ const withFetch = BaseComponent => class extends Component {
     }
 
     componentDidMount(){
-        const url = this.createURL();
+        const url = this.getURL();
+        console.log(url)
         getFromUnsplash(url)
             .then(data => {
                 this.setState({ 
@@ -36,26 +36,29 @@ const withFetch = BaseComponent => class extends Component {
             });
     }
 
-    createNewPath(key, id){
-        const { params } = this.props.match;
-        const regexp = new RegExp(':id');
-     
-        const newID = map[key].path.replace(regexp, id || params.id);
+    getURL(){
+        const { path, params } = this.props.match;
+        const { id, slug, isSection } = this.props;
 
-        const perPage = map[key].perPage > 0 ? `${newID}/?per_page=${map[key].perPage}` : newID;
-
-        return perPage;
-    }
-
-    createURL(){
-        const id = this.props.id;
-        const { path } = this.props.match;
-        const url = config.unsplash.UNSPLASH_BASE_URL;
-        const key = id
+        const key = isSection
             ? "HomePageSection"
             : Object.keys(map).find(key => key === path);
-        return url + this.createNewPath(key, id);
+
+        const values = {
+            id: id || params.id,
+            slug: slug,
+            params: {
+                page: "",
+                perPage: map[key]?.perPage,
+                order: ""
+            },
+            path: map[key]?.path,
+            isSection: isSection || false
+        };
+        console.log(values, this.props)
+        return createURL(values);
     }
+    
 
     render (){
         const { data, loading } = this.state;

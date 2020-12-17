@@ -24,7 +24,7 @@ class Author extends Component {
         return(
             <Wrapper>
                 <Avatar>
-                    <img src={avatar.medium} alt="author's avatar"/>
+                    <img src={avatar?.medium} alt="author's avatar"/>
                 </Avatar>
                  <h2>{name}</h2>
             </Wrapper> 

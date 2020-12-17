@@ -3,7 +3,8 @@ import { withRouter } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 
-import { codesGeneretor, createURL } from './helpers';
+import { codesGenerator, createURL } from '../Shared/helpers';
+// import { createURL } from './helpers';
 import { getFromUnsplash } from './actions';
 import settings from './global';
 import Card from '../Card';
@@ -26,16 +27,34 @@ class Section extends Component{
         return data.length >= 1 
         ? data 
         : data.concat(
-        <div key={codesGeneretor()}>
+        <div key={codesGenerator()}>
             <p>Couldn't get any data.. Please comeback later ;)</p>
         </div>
         );
     }
 
-    getData = () =>{
+    getURL(){
         const { slug } = this.props.match.params;
         const { page, sortBy } = this.state;
-        const url = createURL(slug, page, sortBy);
+
+        const values = {
+            id: null,
+            slug: slug,
+            params:{
+                page: page,
+                perPage: settings.perPage,
+                order: sortBy,
+            },
+            path: settings.path,
+            isSection: true
+        };
+        return createURL(values);
+    }
+
+
+    getData = () =>{
+       
+        const url = this.getURL();
 
         getFromUnsplash(url)
             .then(data => {
@@ -61,7 +80,7 @@ class Section extends Component{
     
     createCards= (data) => {
         const images = data.map(item => {
-            const key = codesGeneretor();
+            const key = codesGenerator();
             return <Card key={key} url={item.urls.small} alt={item.alt_description} id={item.id}/>
         });
 
@@ -85,7 +104,7 @@ class Section extends Component{
     render(){
         const { cards, hasMore } = this.state;
         const { data, options } = settings.sort;
-        const load = <Loader key={codesGeneretor()} />;
+        const load = <Loader key={codesGenerator()} />;
 
         return(
                 <StyledList>

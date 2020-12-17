@@ -8,8 +8,6 @@ import withFetch from '../../HOC/withFetch';
 import settings from '../global';
 
 
-
-
 class GridList extends Component{
 
     state={
@@ -25,7 +23,7 @@ class GridList extends Component{
         const quantity = settings.sectionsListsSettings.cardsToShow;
         if(!Array.isArray(data)) return;
         const images = data.map(item => {
-            return <Card key={item.id} url={item.urls.small} alt={item.alt_description} id={item.id}/>
+            return <Card data={item} key={item.id} url={item.urls?.small} alt={item.alt_description} id={item.id}/>;
         });
 
         return images.slice(0, quantity);

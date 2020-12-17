@@ -20,8 +20,6 @@ function Head(data){
   };
 
 class Image extends Component{
-    componentDidMount(){
-    }
 
     render(){
         const { urls, alt_description: alt, user, description } = this.props.data; 

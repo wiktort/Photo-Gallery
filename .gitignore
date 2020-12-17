@@ -24,3 +24,5 @@ yarn-error.log*
 
 #other
 project.md
+project-description.md
+src/containers/Shared/Grid/Masonry.js

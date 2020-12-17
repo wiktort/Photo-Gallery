@@ -5,9 +5,9 @@ class Content extends Component{
 
     render(){
         return(
-            <main>
+            <div>
                 <img src={this.props.url} alt={this.props.alt} />
-            </main>
+            </div>
         );
     }
 }

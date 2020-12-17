@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import CardFunc from './Card';
-import CardClass from './CardClass';
 import styled from 'styled-components';
 
-const StyledWrapper = styled.div`
-margin: 1vmax;
-padding: 1vh 0;
-`;
+import { Link } from 'react-router-dom';
+import Header from './Components/Header';
+import Content from './Components/Content';
+import Footer from './Components/Footer';
+
 
 class Card extends Component{
     state = {
         classType: false,
-        cardComponent: CardFunc,
     }
 
     componentDidMount() {
@@ -19,27 +17,31 @@ class Card extends Component{
     componentDidUpdate(){
     }
 
-    switchCard = () => {
-        const newClassType = !this.state.classType;
-        this.setState(()=>{
-            return {
-                classType: newClassType,
-                cardComponent: [CardFunc,CardClass][Number(newClassType)]
-            }
-        });
-    }
-
+    
     render(){
         const { id, url, alt } = this.props;
         return(
-            <StyledWrapper>
-                {/* <button onClick={this.switchCard}>Switch Card</button>
-                <this.state.cardComponent url={this.props.url} /> */}
-                <CardClass url={url} alt={alt} id={id} />
-            </StyledWrapper>
+            
+            <StyledLink to={`/image/${id}`}>
+                <StyledWrapper className="CardClass">
+                    <Header />
+                    <Content url={url} alt={alt} />
+                    <Footer />
+                </StyledWrapper>
+            </StyledLink>
         );
     }
 
 };
 
 export default Card;
+
+const StyledLink = styled(Link)`
+    margin: 1vmax;
+    padding: 1vh 0;
+`;
+
+const StyledWrapper = styled.div`
+    position: relative;
+`;
+

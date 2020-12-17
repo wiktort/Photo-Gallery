@@ -8,7 +8,7 @@ class Photo extends Component {
         return(
             <StyledImage>
                 <StyledFigure>
-                    <img src={urls.regular} alt={alt || "photo from Unsplash"} />
+                    <img src={urls?.regular} alt={alt || "photo from Unsplash"} />
                     <figcaption>Author's description: {desc}</figcaption>
                 </StyledFigure>
             </StyledImage>
