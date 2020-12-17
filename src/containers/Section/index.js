@@ -130,7 +130,7 @@ const StyledHeader = styled.header`
     align-items: center;
     position: sticky;
     top: 0;
-    width: 100vw;
+    width: 100%;
     height: ${(props) => props.theme.sizes.headerHeight};
     background-color: ${(props) => props.theme.colors.background};
     @media screen and (min-width: 533px){
