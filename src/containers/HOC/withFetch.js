@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getFromUnsplash } from './actions';
+import { getFromUnsplash } from '../Shared/api';
 import { createURL } from '../Shared/helpers';
 
 const map = {

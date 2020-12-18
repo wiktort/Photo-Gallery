@@ -4,8 +4,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 
 import { codesGenerator, createURL } from '../Shared/helpers';
-// import { createURL } from './helpers';
-import { getFromUnsplash } from './actions';
+import { getFromUnsplash } from '../Shared/api';
 import settings from './global';
 import Card from '../Card';
 import Select from '../Shared/Select';
