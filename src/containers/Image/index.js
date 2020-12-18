@@ -47,12 +47,16 @@ const StyledWrapper = styled.div`
 
 const StyledRow = styled.div`
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: 2vh;
 
     @media screen and (orientation: landscape){
         max-width: 80vw;
         margin-left: auto;
         margin-right: auto;
+    }
+    @media screen and (min-width: 375px){
+        justify-content: space-between;
     }
 `;

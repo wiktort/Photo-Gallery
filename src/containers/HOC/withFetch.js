@@ -26,7 +26,6 @@ const withFetch = BaseComponent => class extends Component {
 
     componentDidMount(){
         const url = this.getURL();
-        console.log(url)
         getFromUnsplash(url)
             .then(data => {
                 this.setState({ 

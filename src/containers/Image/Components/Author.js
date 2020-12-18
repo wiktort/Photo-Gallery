@@ -1,20 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-    display: flex;
-    align-items: center;
-        h2{
-            margin-left: 10px;
-        }
-`;
-
-const Avatar = styled.div`
-    border-radius: 50%;
-    overflow: hidden;
-    height: 64px;
-    width: 64px;
-`;
 
 class Author extends Component {
 
@@ -33,3 +19,20 @@ class Author extends Component {
 };
 
 export default Author;
+
+
+const Wrapper = styled.div`
+    display: flex;
+    align-items: center;
+    margin-right: 2vmin;
+        h2{
+            margin-left: 10px;
+        }
+`;
+
+const Avatar = styled.div`
+    border-radius: 50%;
+    overflow: hidden;
+    height: 64px;
+    width: 64px;
+`;
