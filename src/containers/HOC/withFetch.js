@@ -54,7 +54,6 @@ const withFetch = BaseComponent => class extends Component {
             path: map[key]?.path,
             isSection: isSection || false
         };
-        console.log(values, this.props)
         return createURL(values);
     }
     

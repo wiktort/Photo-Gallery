@@ -1,6 +1,7 @@
 import React, { Component }from 'react';
 import { Helmet } from 'react-helmet-async';
 import { withRouter } from 'react-router-dom';
+import { codesGenerator } from '../Shared/helpers';
 import withFetch from '../HOC/withFetch';
 import StyledColumn from '../Shared/Grid/StyledColumn';
 import Section from './Components/GridList';
@@ -39,7 +40,7 @@ class Home extends Component {
     createSections(list){
         const quantity = settings.sectionsListsSettings.listsToShow;
         const sections = list.map(item => {
-            return <Section key={item.id} id={item.id} title={item.title} slug={item.slug} isSection={true} />
+            return <Section key={codesGenerator()} id={item.id} title={item.title} slug={item.slug} isSection={true} />
         });
 
         return sections.slice(0, quantity);

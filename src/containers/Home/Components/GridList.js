@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Card from '../../Card';
 import withFetch from '../../HOC/withFetch';
+import { codesGenerator } from '../../Shared/helpers';
 
 import settings from '../global';
 
@@ -23,7 +24,7 @@ class GridList extends Component{
         const quantity = settings.sectionsListsSettings.cardsToShow;
         if(!Array.isArray(data)) return;
         const images = data.map(item => {
-            return <Card data={item} key={item.id} url={item.urls?.small} alt={item.alt_description} id={item.id}/>;
+            return <Card data={item} key={codesGenerator()} url={item.urls?.small} alt={item.alt_description} id={item.id}/>;
         });
 
         return images.slice(0, quantity);
