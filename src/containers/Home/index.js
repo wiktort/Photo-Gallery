@@ -40,7 +40,12 @@ class Home extends Component {
     createSections(list){
         const quantity = settings.sectionsListsSettings.listsToShow;
         const sections = list.map(item => {
-            return <Section key={codesGenerator()} id={item.id} title={item.title} slug={item.slug} isSection={true} />
+            return <Section 
+                    key={codesGenerator()} 
+                    id={item.id} 
+                    title={item.title} 
+                    slug={item.slug} 
+                    isSection={true} />
         });
 
         return sections.slice(0, quantity);

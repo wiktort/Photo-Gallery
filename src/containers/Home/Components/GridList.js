@@ -24,7 +24,7 @@ class GridList extends Component{
         const quantity = settings.sectionsListsSettings.cardsToShow;
         if(!Array.isArray(data)) return;
         const images = data.map(item => {
-            return <Card data={item} key={codesGenerator()} url={item.urls?.small} alt={item.alt_description} id={item.id}/>;
+            return <Card data={item} key={codesGenerator()} />;
         });
 
         return images.slice(0, quantity);

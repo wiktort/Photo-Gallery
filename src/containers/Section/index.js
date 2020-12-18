@@ -80,7 +80,7 @@ class Section extends Component{
     createCards= (data) => {
         const images = data.map(item => {
             const key = codesGenerator();
-            return <Card key={key} url={item.urls.small} alt={item.alt_description} id={item.id}/>
+            return <Card key={key} data={item} />
         });
 
         return images;
