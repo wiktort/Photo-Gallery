@@ -21,16 +21,20 @@ function Header({ downloads, likes }){
 export default Header; 
 
 const StyledHeader = styled.header`
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     transform: translateY(-100%);
-    padding: 0 10%;
+    padding: 4% 10% 0 10%;
     transition: 0.1s linear;
 `;
 
 const StyledWrapper = styled.div`
     display: flex;
     justify-content: space-between;
+    width: 100%;
 `;

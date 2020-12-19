@@ -16,10 +16,13 @@ function Footer({ location }) {
 export default Footer;
 
 const StyledFooter = styled.footer`
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
     position: absolute;
     bottom: 0;
     left: 0;
     transform: translateY(100%);
-    padding: 0 10%;
+    padding: 0 10% 4% 10%;
     transition: 0.1s linear;
 `;

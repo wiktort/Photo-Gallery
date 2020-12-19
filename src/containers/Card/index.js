@@ -70,12 +70,18 @@ export default Card;
 const StyledLink = styled(Link)`
     margin: 1vmax;
     padding: 1vh 0;
+    & .Card-Footer, & .Card-Header{
+        height: 30%;
+        width: 100%;
+    };
     &:hover .Card-Footer {
-        transform: translateY(-100%);
+        transform: translateY(0);
+        background-image: linear-gradient(180deg, transparent, white 80%);
     };
     &:hover .Card-Header{
-        transform: translateY(100%);
-    }
+        transform: translateY(0);
+        background-image: linear-gradient(0deg, transparent, white 80%);
+    };
 `;
 
 const StyledWrapper = styled.div`
