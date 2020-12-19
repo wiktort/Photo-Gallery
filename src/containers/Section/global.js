@@ -1,6 +1,6 @@
 const settings = {
     path: "/topics/:slug/photos",
-    perPage: "10",
+    perPage: "20",
     sort: {
         data:{
             id: "sort_by",

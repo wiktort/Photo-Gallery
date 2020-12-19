@@ -9,6 +9,6 @@ export const getFromUnsplash = async (url) => {
         })
         .catch(err => {
             console.warn('Error', err);
-            return err;
+            return [];
         });
 };
