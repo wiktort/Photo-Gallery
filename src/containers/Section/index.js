@@ -151,6 +151,7 @@ const StyledHeader = styled.header`
     width: 100%;
     height: ${(props) => props.theme.sizes.headerHeight};
     background-color: ${(props) => props.theme.colors.background};
+    z-index: 1;
     @media screen and (min-width: 533px){
         grid-template-columns: repeat(3, 1fr);
         h2{
