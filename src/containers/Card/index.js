@@ -48,7 +48,7 @@ class Card extends Component{
     }
 
     render(){
-        const { id, urls, alt_description: alt } = this.props.data;
+        const { id, urls, alt_description: alt, blur_hash } = this.props.data;
         const { downloads, likes, location } = this.state.data;
 
         return(
@@ -56,7 +56,7 @@ class Card extends Component{
             <StyledLink to={`/image/${id}`}>
                 <StyledWrapper className="CardClass">
                     <Header downloads={downloads} likes={likes}/>
-                    <Content url={urls?.small} alt={alt} />
+                    <Content data={this.props.data} blur_hash={blur_hash} url={urls?.small} alt={alt} />
                     <Footer location={location}/>
                 </StyledWrapper>
             </StyledLink>

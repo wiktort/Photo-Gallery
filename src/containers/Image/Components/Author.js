@@ -5,7 +5,8 @@ import styled from 'styled-components';
 class Author extends Component {
 
     render(){
-        const { name, profile_image: avatar } = this.props.author;
+        const name = this.props?.author?.name;
+        const avatar  = this.props?.author?.profile_image;
 
         return(
             <Wrapper>
