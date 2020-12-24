@@ -31,6 +31,9 @@ class Image extends Component{
                     <Social path={this.props.other.location.pathname} />
                 </StyledRow>
                 <Photo urls={urls} alt={alt} desc={description} />
+                 <StyledAttribution>
+                 "Icon made by Freepik from www.flaticon.com"
+                 </StyledAttribution>
             </StyledWrapper>
         );
     }
@@ -60,3 +63,8 @@ const StyledRow = styled.div`
         justify-content: space-between;
     }
 `;
+
+const StyledAttribution = styled.div`
+     font-size: 10px;
+     color: gray;
+ `;

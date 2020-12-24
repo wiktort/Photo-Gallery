@@ -75,6 +75,7 @@ const StyledWrapper = styled(StyledColumn)`
 const StyledRowWrapper = styled(StyledRow)`
     display: flex;
     flex-direction: column;
+    width: 100%;
 `;
 
 const StyledMain = styled(StyledColumn)`
